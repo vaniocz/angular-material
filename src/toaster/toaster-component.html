@@ -1,0 +1,7 @@
+<div class="test">
+    <div class="notification notification--{{ notification.options.severity }}" *ngFor="let notification of notifications | async" [@toasterAnimations]>
+        <mat-icon class="icon" *ngIf="notification.options.icon !== false">{{ notification.options.icon || notification.options.severity === 'success' ? 'done' : notification.options.severity }}</mat-icon>
+        <p class="message">{{ notification.message }}</p>
+        <button mat-icon-button class="close" aria-label="close" *ngIf="notification.options.closable" (click)="close(notification.id)"><mat-icon>close</mat-icon></button>
+    </div>
+</div>

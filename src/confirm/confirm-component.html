@@ -1,0 +1,10 @@
+<h1 mat-dialog-title *ngIf="confirmDialog.title">{{ confirmDialog.title }}</h1>
+
+<div mat-dialog-content>
+    <p class="message">{{ confirmDialog.message }}</p>
+</div>
+
+<div mat-dialog-actions class="actions">
+    <button mat-flat-button color="primary" (click)="confirm()">{{ confirmDialog.confirmLabel || 'Potvrdit' }}</button>
+    <button mat-stroked-button (click)="dismiss()">{{ confirmDialog.dismissLabel || 'Zrušit' }}</button>
+</div>
