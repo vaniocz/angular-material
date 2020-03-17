@@ -1,0 +1,58 @@
+@mixin loadable-theme($theme) {
+    $primary-color: mat-color(map-get($theme, primary));
+
+    .loadable {
+        position: relative;
+
+        &::before {
+            background-color: rgba(white, 0.75);
+            content: "";
+            opacity: 0;
+            position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            visibility: hidden;
+        }
+
+        &::after {
+            align-items: center;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="spinner" viewBox="0 0 100 100"><style>.spinner{animation:rotator 5s linear infinite;transform-origin:center}@keyframes rotator{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.path{stroke-dasharray:270;stroke-dashoffset:0;transform-origin:center;stroke:%23#{unquote("#{str-slice(ie-hex-str($primary-color), 4)}")};animation:dash 1.4s ease-in-out infinite}@keyframes dash{0%{stroke-dashoffset:265}50%{stroke-dashoffset:65;transform:rotate(90deg)}100%{stroke-dashoffset:265;transform:rotate(360deg)}}</style><circle class="path" fill="none" stroke-width="10" stroke-linecap="butt" cx="50" cy="50" r="40"/></svg>');
+            background-position: center calc(50% - 12px);
+            background-repeat: no-repeat;
+            background-size: 48px;
+            color: $primary-color;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            padding-top: 55px;
+            position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+            text-align: center;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            visibility: hidden;
+        }
+
+        &:lang(en)::after {
+            content: "Loading…";
+        }
+
+        &:lang(cs)::after {
+            content: "Načítám…";
+        }
+
+        &.is-loading {
+            cursor: progress !important;
+
+            &::before,
+            &::after {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    button.loadable.loadable::after {
+        background-position: center;
+        background-size: 20px;
+        content: "";
+        padding-top: 0;
+    }
+}
