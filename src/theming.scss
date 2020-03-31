@@ -55,4 +55,8 @@
         content: "";
         padding-top: 0;
     }
+
+    mat-option.loadable.is-loading {
+        min-height: 100px;
+    }
 }
