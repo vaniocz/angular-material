@@ -1,7 +1,7 @@
 {
   "name": "@vanio-cz/angular-material",
   "homepage": "https://github.com/vaniocz/angular-material#readme",
-  "version": "0.0.9",
+  "version": "0.0.14",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
