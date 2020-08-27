@@ -74,4 +74,10 @@ export class Toaster {
             }, 500);
         }
     }
+
+    public closeAll(): void {
+        this.notifications = [];
+        this.notifications$.next(this.notifications);
+        this.notificationsCount = 0;
+    }
 }
